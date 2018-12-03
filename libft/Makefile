@@ -6,7 +6,7 @@
 #    By: vladuhin <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/01 19:05:02 by vladuhin          #+#    #+#              #
-#    Updated: 2018/11/11 19:54:37 by vladuhin         ###   ########.fr        #
+#    Updated: 2018/12/03 13:52:16 by blukasho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,7 +82,7 @@ LIB = $(SRC:%.c=%.o)
 all: $(NAME)
 
 $(NAME):
-	@gcc -c -Wall -Wextra -Werror $(SRC) libft.h
+	@gcc -c -Wall -Wextra -Werror $(SRC)
 	@ar rc $(NAME) $(LIB)
 
 clean:
