@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_swap.c                                          :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vladuhin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/11 19:36:21 by vladuhin          #+#    #+#             */
-/*   Updated: 2018/12/03 17:02:51 by blukasho         ###   ########.fr       */
+/*   Created: 2018/11/09 17:49:32 by blukasho          #+#    #+#             */
+/*   Updated: 2018/11/09 18:34:02 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_swap(int *a, int *b)
-{
-	int temp;
+#include "libft.h"
 
-	temp = *a;
-	*a = *b;
-	*b = temp;
+char	*ft_strndup(const char *s1, size_t n)
+{
+	char	*res;
+	size_t	i;
+
+	i = 0;
+	res = ft_strnew(n);
+	if (res)
+		while (i < n)
+		{
+			res[i] = s1[i];
+			i++;
+		}
+	return (res);
 }
