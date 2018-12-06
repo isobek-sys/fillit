@@ -6,13 +6,13 @@
 #    By: blukasho <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/03 14:41:30 by blukasho          #+#    #+#              #
-#    Updated: 2018/12/03 17:07:11 by blukasho         ###   ########.fr        #
+#    Updated: 2018/12/06 15:35:56 by blukasho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-GFLAGS = -Wall -Wextra -Werror
+GFLAGS = -Wall -Wextra -Werror -I includes
 
 AR = ar rcs
 
@@ -27,7 +27,7 @@ SRC = ft_atoi.c ft_bzero.c ft_is_negative.c ft_isalnum.c ft_isalpha.c\
 	  ft_strmapi.c ft_strncat.c ft_strncmp.c ft_strncpy.c ft_strnequ.c\
 	  ft_strnew.c ft_strnstr.c ft_strrchr.c ft_strsplit.c ft_strstr.c\
 	  ft_strsub.c ft_strtrim.c ft_swap.c ft_tolower.c ft_toupper.c\
-	  get_next_line.c ft_strndup.c
+	  get_next_line.c ft_strndup.c ft_putchar.c ft_putendl.c
 
 OBJ = $(SRC:%.c=%.o)
 
