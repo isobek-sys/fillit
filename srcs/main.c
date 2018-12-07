@@ -6,11 +6,41 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 14:10:35 by blukasho          #+#    #+#             */
-/*   Updated: 2018/12/06 16:11:50 by blukasho         ###   ########.fr       */
+/*   Updated: 2018/12/07 13:36:18 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/fillit.h"
+#include "../includes/fillit.h"
+
+char		**get_arr(int x, int y)
+{
+	char	**res;
+
+	res = (char **)malloc(++y * sizeof(char *));
+	res[y] = NULL;
+	while (--y >= 0)
+		res[y] = ft_strnew(x);
+	return (res);
+}
+
+void		read_file(const int fd)
+{
+	char	*tmp;
+	char	**res;
+	char	**res_tmp;
+	int		i;
+	int		a;
+
+	res = (char **)malloc(5 * sizeof(char *));
+	res[4] = NULL;
+	res_tmp = res;
+	a = 0;
+	while ((i = get_next_line(fd, &tmp)) > 0)
+		if (tmp[0] && a < 4)
+			res[a++] = ft_strdup(tmp);
+	while (*res_tmp)
+		ft_putendl(*(res_tmp++));
+}
 
 int			main(int argc, char **argv)
 {
@@ -19,7 +49,7 @@ int			main(int argc, char **argv)
 	if (argc == 2)
 	{
 		if ((fd = open(argv[1], O_RDONLY)) >= 0)
-			fillit(fd);
+			read_file(fd);
 		else
 			ft_putendl("Dosnt open file.");
 	}

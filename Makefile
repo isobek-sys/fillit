@@ -6,11 +6,13 @@
 #    By: blukasho <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/06 14:21:54 by blukasho          #+#    #+#              #
-#    Updated: 2018/12/06 17:06:03 by blukasho         ###   ########.fr        #
+#*   Updated: 2018/12/07 11:54:48 by blukasho         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
-SRC = srcs/main.c srcs/fillit.c
+SRC = srcs/main.c
 
-GCC = gcc -Wall -Wextra -Werror -L libft -lft 
+FLAGS = -Wall -Wextra -Werror
 
+all:
+	gcc $(SRC) $(FLAGS) -L libft -lft
