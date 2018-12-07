@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 14:10:35 by blukasho          #+#    #+#             */
-/*   Updated: 2018/12/07 13:36:18 by blukasho         ###   ########.fr       */
+/*   Updated: 2018/12/07 15:19:57 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,38 @@ char		**get_arr(int x, int y)
 	return (res);
 }
 
+char		**get_fiq(char ***map)
+{
+	char	**res;
+	t_fiq	fiq;
+
+	res = **map;
+	while (res)
+	{
+		while (*res)
+		{
+			if (*res == '#' && fiq->y 
+		}
+	}
+	return (res);
+}
+
 void		read_file(const int fd)
 {
 	char	*tmp;
 	char	**res;
 	char	**res_tmp;
 	int		i;
-	int		a;
 
 	res = (char **)malloc(5 * sizeof(char *));
 	res[4] = NULL;
 	res_tmp = res;
-	a = 0;
 	while ((i = get_next_line(fd, &tmp)) > 0)
-		if (tmp[0] && a < 4)
-			res[a++] = ft_strdup(tmp);
-	while (*res_tmp)
-		ft_putendl(*(res_tmp++));
+		if (tmp[0] && (res - res_tmp) < 4)
+			*(res++) = ft_strdup(tmp);
+	res = res_tmp;
+	while (*res)
+		ft_putendl(*(res++));
 }
 
 int			main(int argc, char **argv)
