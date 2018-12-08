@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 14:10:35 by blukasho          #+#    #+#             */
-/*   Updated: 2018/12/08 21:46:25 by blukasho         ###   ########.fr       */
+/*   Updated: 2018/12/08 22:33:09 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,35 @@ void		del_map(char ***map)
 	free(*map);
 }
 
+int			copy_arr(char ***dst, char **src)
+{
+	char	**tmp;
+
+	tmp = *dst;
+	while (*src)
+	{
+		while (*src)
+			*(tmp++) = *src++;
+		++src;
+		++tmp;
+	}
+	return(1);
+}
+
+int			add_tetr(int x, int y, char **map, char **tet)
+{
+	
+	return (0);
+}
+
 int			bruteforce(char ***res, char **map, t_tet *tet)
 {
-	return (1);
+	if (tet)
+	{
+
+	}
+	else
+		return (copy_arr(res, map));
 }
 
 void		fillit(void)
