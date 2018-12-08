@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 14:10:35 by blukasho          #+#    #+#             */
-/*   Updated: 2018/12/08 19:16:52 by blukasho         ###   ########.fr       */
+/*   Updated: 2018/12/08 21:46:25 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,15 +84,15 @@ void		del_map(char ***map)
 {
 	char	**tmp;
 
-	tmp = **map;
-	while (*map)
-		ft_strdel(&(**(map++)));
-	free(tmp);
+	tmp = *map;
+	while (*tmp)
+		ft_strdel(&(*(tmp++)));
+	free(*map);
 }
 
-void		bruteforce(char ***res)
+int			bruteforce(char ***res, char **map, t_tet *tet)
 {
-	del_map(res);
+	return (1);
 }
 
 void		fillit(void)
@@ -103,15 +103,19 @@ void		fillit(void)
 	int		sq_side;
 
 	tetrs = get_map();
-	numb_of_tetr = get_len(fiq);
-	sq_side = 1;
+	numb_of_tetr = get_len(tetrs);
+	sq_side = 2;
 	while (sq_side * sq_side < numb_of_tetr * 4)
 		++sq_side;
-	res = get_arr(sq_side, sq_sqside);
-	bruteforce(&res);
-	/*
-	**Print result array
-	*/
+	res = get_arr(sq_side, sq_side);
+	while (bruteforce(&res,	res, tetrs) == 0)
+	{
+	   del_map(&res);
+	   ++sq_side;
+	   res = get_arr(sq_side, sq_side); 
+	}
+	while (*res)
+		ft_putendl(*(res++));
 }
 
 int			main(void)
