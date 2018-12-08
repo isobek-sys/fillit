@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 14:10:35 by blukasho          #+#    #+#             */
-/*   Updated: 2018/12/07 15:19:57 by blukasho         ###   ########.fr       */
+/*   Updated: 2018/12/08 19:16:52 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,61 +15,107 @@
 char		**get_arr(int x, int y)
 {
 	char	**res;
+	int		len;
 
 	res = (char **)malloc(++y * sizeof(char *));
-	res[y] = NULL;
+	res[--y] = NULL;
 	while (--y >= 0)
+	{
 		res[y] = ft_strnew(x);
-	return (res);
-}
-
-char		**get_fiq(char ***map)
-{
-	char	**res;
-	t_fiq	fiq;
-
-	res = **map;
-	while (res)
-	{
-		while (*res)
-		{
-			if (*res == '#' && fiq->y 
-		}
+		len = -1;
+		while(++len < x) 
+			res[y][len] = '.';
 	}
 	return (res);
 }
 
-void		read_file(const int fd)
+int			get_len(t_tet *tet)
 {
-	char	*tmp;
-	char	**res;
-	char	**res_tmp;
-	int		i;
+	int		res;
 
-	res = (char **)malloc(5 * sizeof(char *));
-	res[4] = NULL;
-	res_tmp = res;
-	while ((i = get_next_line(fd, &tmp)) > 0)
-		if (tmp[0] && (res - res_tmp) < 4)
-			*(res++) = ft_strdup(tmp);
-	res = res_tmp;
-	while (*res)
-		ft_putendl(*(res++));
+	res = 0;
+	while (tet && ++res)
+		tet = tet->next;
+	return (res);
 }
 
-int			main(int argc, char **argv)
+void		print_maps(t_tet *maps)
 {
-	int		fd;
+	char	**tmp;
 
-	if (argc == 2)
+	while (maps)
 	{
-		if ((fd = open(argv[1], O_RDONLY)) >= 0)
-			read_file(fd);
-		else
-			ft_putendl("Dosnt open file.");
+		tmp = maps->elem;
+		while(*tmp)
+			ft_putendl(*(tmp++));
+		maps = maps->next;
 	}
-	else if (argc > 2)
-		ft_putendl("To many arguments!");
-	else
-		ft_putendl("No input file.");
+}
+
+t_tet		*get_map(void)
+{
+	t_tet	*res;
+	t_tet	*tmp;
+	t_tet	*nel;
+
+	res = (t_tet *)malloc(sizeof(t_tet));
+	tmp = res;
+	tmp->elem = get_arr(2, 2);
+	tmp->elem[0][0] = '#';
+	tmp->elem[0][1] = '#';
+	tmp->elem[1][0] = '#';
+	tmp->elem[1][1] = '#';
+	tmp->c = 'A';
+	nel = (t_tet *)malloc(sizeof(t_tet));
+	tmp->next = nel;
+	tmp = tmp->next;
+	tmp->elem = get_arr(3, 2);
+	tmp->elem[0][0] = '.';
+	tmp->elem[0][1] = '#';
+	tmp->elem[0][2] = '.';
+	tmp->elem[1][0] = '#';
+	tmp->elem[1][1] = '#';
+	tmp->elem[1][2] = '#';
+	tmp->c = 'B';
+	return (res);
+}
+
+void		del_map(char ***map)
+{
+	char	**tmp;
+
+	tmp = **map;
+	while (*map)
+		ft_strdel(&(**(map++)));
+	free(tmp);
+}
+
+void		bruteforce(char ***res)
+{
+	del_map(res);
+}
+
+void		fillit(void)
+{
+	t_tet	*tetrs;
+	char	**res;
+	int		numb_of_tetr;
+	int		sq_side;
+
+	tetrs = get_map();
+	numb_of_tetr = get_len(fiq);
+	sq_side = 1;
+	while (sq_side * sq_side < numb_of_tetr * 4)
+		++sq_side;
+	res = get_arr(sq_side, sq_sqside);
+	bruteforce(&res);
+	/*
+	**Print result array
+	*/
+}
+
+int			main(void)
+{
+	fillit();
+	return (0);
 }
