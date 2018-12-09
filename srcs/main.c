@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 14:10:35 by blukasho          #+#    #+#             */
-/*   Updated: 2018/12/08 22:33:09 by blukasho         ###   ########.fr       */
+/*   Updated: 2018/12/09 12:49:33 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,29 @@ int			copy_arr(char ***dst, char **src)
 
 int			add_tetr(int x, int y, char **map, char **tet)
 {
-	
-	return (0);
+	char	*str;
+	int		xx;
+
+	xx = x;
+	while (*tet)
+	{
+		if (!map[y])
+			return (0);
+		str = *tet;
+		while (*str)
+		{
+			if (!map[y][xx])
+				return (0);
+			if (ft_isalpha(*str) && map[y][xx] != '.')
+				return (0); 
+			++xx;
+			++str;	
+		}
+		xx = x;
+		++y;
+		++tet;
+	}
+	return (1);
 }
 
 int			bruteforce(char ***res, char **map, t_tet *tet)
