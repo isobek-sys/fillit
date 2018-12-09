@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 14:10:35 by blukasho          #+#    #+#             */
-/*   Updated: 2018/12/09 12:49:33 by blukasho         ###   ########.fr       */
+/*   Updated: 2018/12/09 18:03:55 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void		print_maps(t_tet *maps)
 		while(*tmp)
 			ft_putendl(*(tmp++));
 		maps = maps->next;
+		ft_putendl("");
 	}
 }
 
@@ -105,7 +106,33 @@ int			copy_arr(char ***dst, char **src)
 	return(1);
 }
 
-int			add_tetr(int x, int y, char **map, char **tet)
+void		add_tetr(int y, int x, char ***map, t_tet *tet)
+{
+	char	**mp;
+	char	**tt;
+	char	*s;
+	int		xx;
+	
+	tt = tet->elem;
+	xx = x;
+	mp = *map;
+	while (*tt)
+	{
+		s = *tt;
+		while (*s)
+		{
+			if (*s == '#')
+				mp[y][xx] = tet->c;
+			++xx;
+			++s;
+		}
+		xx = x;
+		++tt;
+		++y;
+	}
+}
+
+int			try_add_tetr(int y, int x, char **map, char **tet)
 {
 	char	*str;
 	int		xx;
@@ -120,7 +147,7 @@ int			add_tetr(int x, int y, char **map, char **tet)
 		{
 			if (!map[y][xx])
 				return (0);
-			if (ft_isalpha(*str) && map[y][xx] != '.')
+			if (*str == '#' && map[y][xx] != '.')
 				return (0); 
 			++xx;
 			++str;	
@@ -132,14 +159,61 @@ int			add_tetr(int x, int y, char **map, char **tet)
 	return (1);
 }
 
-int			bruteforce(char ***res, char **map, t_tet *tet)
+void		print_arr(char **arr)
 {
+	while (*arr)
+		ft_putendl(*(arr++));
+}
+
+void		remove_tetr(char ***map, char c)
+{
+	char	**mp;
+	char	*s;
+
+	mp = *map;
+	while (*mp)
+	{
+		s = *mp;
+		while (*s)
+		{
+			if (*s == c)
+				*s = '.';
+			++s;
+		}
+		++mp;
+	}
+}
+
+int			bruteforce(char **map, t_tet *tet)
+{
+	int		y;
+	int		x;
+
+	x = 0;
+	y = 0;
 	if (tet)
 	{
-
+		while (map[y])
+		{
+			while (map[y][x])
+			{
+				if (try_add_tetr(y, x, map, tet->elem))
+				{
+					add_tetr(y, x, &map, tet);
+					if (bruteforce(map, tet->next))
+						return (1);
+					else
+						remove_tetr(&map, tet->c);
+				}
+				++x;
+			}
+			x = 0;
+			++y;
+		}
+		return (0);
 	}
-	else
-		return (copy_arr(res, map));
+	print_arr(map);
+	return (1);
 }
 
 void		fillit(void)
@@ -155,14 +229,15 @@ void		fillit(void)
 	while (sq_side * sq_side < numb_of_tetr * 4)
 		++sq_side;
 	res = get_arr(sq_side, sq_side);
-	while (bruteforce(&res,	res, tetrs) == 0)
+
+	print_maps(tetrs);
+	ft_putendl("");
+	while (!bruteforce(res, tetrs))
 	{
-	   del_map(&res);
-	   ++sq_side;
-	   res = get_arr(sq_side, sq_side); 
+		del_map(&res);
+		++sq_side;
+		res = get_arr(sq_side, sq_side); 
 	}
-	while (*res)
-		ft_putendl(*(res++));
 }
 
 int			main(void)
