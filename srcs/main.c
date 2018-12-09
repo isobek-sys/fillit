@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 14:10:35 by blukasho          #+#    #+#             */
-/*   Updated: 2018/12/09 19:31:31 by blukasho         ###   ########.fr       */
+/*   Updated: 2018/12/09 21:55:30 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,49 @@ t_tet		*get_map(void)
 	tmp->elem[1][0] = '#';
 	tmp->elem[1][1] = '#';
 	tmp->c = 'A';
+
+	nel = (t_tet *)malloc(sizeof(t_tet));
+	tmp->next = nel;
+	tmp = tmp->next;
+	tmp->elem = get_arr(2, 2);
+	tmp->elem[0][0] = '#';
+	tmp->elem[0][1] = '#';
+	tmp->elem[1][0] = '#';
+	tmp->elem[1][1] = '#';
+	tmp->c = 'B';
+
+
+	nel = (t_tet *)malloc(sizeof(t_tet));
+	tmp->next = nel;
+	tmp = tmp->next;
+	tmp->elem = get_arr(2, 2);
+	tmp->elem[0][0] = '#';
+	tmp->elem[0][1] = '#';
+	tmp->elem[1][0] = '#';
+	tmp->elem[1][1] = '#';
+	tmp->c = 'C';
+
+	nel = (t_tet *)malloc(sizeof(t_tet));
+	tmp->next = nel;
+	tmp = tmp->next;
+	tmp->elem = get_arr(2, 2);
+	tmp->elem[0][0] = '#';
+	tmp->elem[0][1] = '#';
+	tmp->elem[1][0] = '#';
+	tmp->elem[1][1] = '#';
+	tmp->c = 'D';
+/*
+	nel = (t_tet *)malloc(sizeof(t_tet));
+	tmp->next = nel;
+	tmp = tmp->next;
+	tmp->elem = get_arr(3, 2);
+	tmp->elem[0][0] = '.';
+	tmp->elem[0][1] = '#';
+	tmp->elem[0][2] = '.';
+	tmp->elem[1][0] = '#';
+	tmp->elem[1][1] = '#';
+	tmp->elem[1][2] = '#';
+	tmp->c = 'D';
 
 	nel = (t_tet *)malloc(sizeof(t_tet));
 	tmp->next = nel;
@@ -216,6 +259,7 @@ t_tet		*get_map(void)
 	tmp->elem[1][1] = '#';
 	tmp->elem[1][2] = '#';
 	tmp->c = 'M';
+	*/
 	return (res);
 }
 
@@ -338,8 +382,6 @@ int			bruteforce(char **map, t_tet *tet)
 				if (try_add_tetr(y, x, map, tet->elem))
 				{
 					add_tetr(y, x, &map, tet);
-//					print_arr(map);
-//					ft_putendl("");
 					if (bruteforce(map, tet->next))
 						return (1);
 					else
@@ -368,7 +410,13 @@ void		fillit(void)
 	sq_side = 2;
 	while (sq_side * sq_side < numb_of_tetr * 4)
 		++sq_side;
-	++sq_side;//test parameter
+//	++sq_side;//test parameter
+/*
+**Если все фигуры квадрат то доп инкремент не нужен
+**Дописать функцию которая будет проверять на наличие точек в массивах
+**Если точек нету, это квадрат, и доп инкремент не выполняется
+**В противном случае сторона квадрата должна быть на 1 больше
+*/
 	res = get_arr(sq_side, sq_side);
 
 	print_maps(tetrs);
