@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 14:10:35 by blukasho          #+#    #+#             */
-/*   Updated: 2018/12/09 18:03:55 by blukasho         ###   ########.fr       */
+/*   Updated: 2018/12/09 19:31:31 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ t_tet		*get_map(void)
 	tmp->elem[1][0] = '#';
 	tmp->elem[1][1] = '#';
 	tmp->c = 'A';
+
 	nel = (t_tet *)malloc(sizeof(t_tet));
 	tmp->next = nel;
 	tmp = tmp->next;
@@ -78,6 +79,143 @@ t_tet		*get_map(void)
 	tmp->elem[1][1] = '#';
 	tmp->elem[1][2] = '#';
 	tmp->c = 'B';
+
+	nel = (t_tet *)malloc(sizeof(t_tet));
+	tmp->next = nel;
+	tmp = tmp->next;
+	tmp->elem = get_arr(3, 2);
+	tmp->elem[0][0] = '.';
+	tmp->elem[0][1] = '#';
+	tmp->elem[0][2] = '.';
+	tmp->elem[1][0] = '#';
+	tmp->elem[1][1] = '#';
+	tmp->elem[1][2] = '#';
+	tmp->c = 'C';
+
+	nel = (t_tet *)malloc(sizeof(t_tet));
+	tmp->next = nel;
+	tmp = tmp->next;
+	tmp->elem = get_arr(3, 2);
+	tmp->elem[0][0] = '.';
+	tmp->elem[0][1] = '#';
+	tmp->elem[0][2] = '.';
+	tmp->elem[1][0] = '#';
+	tmp->elem[1][1] = '#';
+	tmp->elem[1][2] = '#';
+	tmp->c = 'D';
+
+	nel = (t_tet *)malloc(sizeof(t_tet));
+	tmp->next = nel;
+	tmp = tmp->next;
+	tmp->elem = get_arr(3, 2);
+	tmp->elem[0][0] = '.';
+	tmp->elem[0][1] = '#';
+	tmp->elem[0][2] = '.';
+	tmp->elem[1][0] = '#';
+	tmp->elem[1][1] = '#';
+	tmp->elem[1][2] = '#';
+	tmp->c = 'E';
+
+	nel = (t_tet *)malloc(sizeof(t_tet));
+	tmp->next = nel;
+	tmp = tmp->next;
+	tmp->elem = get_arr(3, 2);
+	tmp->elem[0][0] = '.';
+	tmp->elem[0][1] = '#';
+	tmp->elem[0][2] = '.';
+	tmp->elem[1][0] = '#';
+	tmp->elem[1][1] = '#';
+	tmp->elem[1][2] = '#';
+	tmp->c = 'F';
+
+	nel = (t_tet *)malloc(sizeof(t_tet));
+	tmp->next = nel;
+	tmp = tmp->next;
+	tmp->elem = get_arr(3, 2);
+	tmp->elem[0][0] = '.';
+	tmp->elem[0][1] = '#';
+	tmp->elem[0][2] = '.';
+	tmp->elem[1][0] = '#';
+	tmp->elem[1][1] = '#';
+	tmp->elem[1][2] = '#';
+	tmp->c = 'G';
+
+	nel = (t_tet *)malloc(sizeof(t_tet));
+	tmp->next = nel;
+	tmp = tmp->next;
+	tmp->elem = get_arr(3, 2);
+	tmp->elem[0][0] = '.';
+	tmp->elem[0][1] = '#';
+	tmp->elem[0][2] = '.';
+	tmp->elem[1][0] = '#';
+	tmp->elem[1][1] = '#';
+	tmp->elem[1][2] = '#';
+	tmp->c = 'H';
+
+
+	nel = (t_tet *)malloc(sizeof(t_tet));
+	tmp->next = nel;
+	tmp = tmp->next;
+	tmp->elem = get_arr(3, 2);
+	tmp->elem[0][0] = '.';
+	tmp->elem[0][1] = '#';
+	tmp->elem[0][2] = '.';
+	tmp->elem[1][0] = '#';
+	tmp->elem[1][1] = '#';
+	tmp->elem[1][2] = '#';
+	tmp->c = 'I';
+
+	nel = (t_tet *)malloc(sizeof(t_tet));
+	tmp->next = nel;
+	tmp = tmp->next;
+	tmp->elem = get_arr(3, 2);
+	tmp->elem[0][0] = '.';
+	tmp->elem[0][1] = '#';
+	tmp->elem[0][2] = '.';
+	tmp->elem[1][0] = '#';
+	tmp->elem[1][1] = '#';
+	tmp->elem[1][2] = '#';
+	tmp->c = 'J';
+
+
+	nel = (t_tet *)malloc(sizeof(t_tet));
+	tmp->next = nel;
+	tmp = tmp->next;
+	tmp->elem = get_arr(3, 2);
+	tmp->elem[0][0] = '.';
+	tmp->elem[0][1] = '#';
+	tmp->elem[0][2] = '.';
+	tmp->elem[1][0] = '#';
+	tmp->elem[1][1] = '#';
+	tmp->elem[1][2] = '#';
+	tmp->c = 'K';
+
+
+	nel = (t_tet *)malloc(sizeof(t_tet));
+	tmp->next = nel;
+	tmp = tmp->next;
+	tmp->elem = get_arr(3, 2);
+	tmp->elem[0][0] = '.';
+	tmp->elem[0][1] = '#';
+	tmp->elem[0][2] = '.';
+	tmp->elem[1][0] = '#';
+	tmp->elem[1][1] = '#';
+	tmp->elem[1][2] = '#';
+	tmp->c = 'L';
+
+
+
+	nel = (t_tet *)malloc(sizeof(t_tet));
+	tmp->next = nel;
+	tmp = tmp->next;
+	tmp->elem = get_arr(3, 2);
+	tmp->elem[0][0] = '.';
+	tmp->elem[0][1] = '#';
+	tmp->elem[0][2] = '.';
+	tmp->elem[1][0] = '#';
+	tmp->elem[1][1] = '#';
+	tmp->elem[1][2] = '#';
+	tmp->c = 'M';
 	return (res);
 }
 
@@ -200,6 +338,8 @@ int			bruteforce(char **map, t_tet *tet)
 				if (try_add_tetr(y, x, map, tet->elem))
 				{
 					add_tetr(y, x, &map, tet);
+//					print_arr(map);
+//					ft_putendl("");
 					if (bruteforce(map, tet->next))
 						return (1);
 					else
@@ -228,12 +368,14 @@ void		fillit(void)
 	sq_side = 2;
 	while (sq_side * sq_side < numb_of_tetr * 4)
 		++sq_side;
+	++sq_side;//test parameter
 	res = get_arr(sq_side, sq_side);
 
 	print_maps(tetrs);
 	ft_putendl("");
 	while (!bruteforce(res, tetrs))
 	{
+		printf("%d\n", sq_side);
 		del_map(&res);
 		++sq_side;
 		res = get_arr(sq_side, sq_side); 
