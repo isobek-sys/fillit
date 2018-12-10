@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 14:10:35 by blukasho          #+#    #+#             */
-/*   Updated: 2018/12/10 11:53:09 by blukasho         ###   ########.fr       */
+/*   Updated: 2018/12/10 15:55:23 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int			get_len_lst(t_tet *tet)
 	return (res);
 }
 
+//delete
 void		print_maps(t_tet *maps)
 {
 	char	**tmp;
@@ -53,6 +54,7 @@ void		print_maps(t_tet *maps)
 	}
 }
 
+//delete
 t_tet		*get_map(void)
 {
 	t_tet	*res;
@@ -122,7 +124,7 @@ t_tet		*get_map(void)
 	tmp->elem[1][1] = '#';
 	tmp->elem[1][2] = '#';
 	tmp->c = 'F';
-
+/*
 	nel = (t_tet *)malloc(sizeof(t_tet));
 	tmp->next = nel;
 	tmp = tmp->next;
@@ -259,7 +261,7 @@ t_tet		*get_map(void)
 	tmp->elem[1][1] = '#';
 	tmp->elem[1][2] = '#';
 	tmp->c = 'Q';
-	
+*/	
 	return (res);
 }
 
@@ -273,38 +275,21 @@ void		del_map(char ***map)
 	free(*map);
 }
 
-int			copy_arr(char ***dst, char **src)
+void		add_tetr(int y, int x, char **map, t_tet *tet)
 {
-	char	**tmp;
-
-	tmp = *dst;
-	while (*src)
-	{
-		while (*src)
-			*(tmp++) = *src++;
-		++src;
-		++tmp;
-	}
-	return(1);
-}
-
-void		add_tetr(int y, int x, char ***map, t_tet *tet)
-{
-	char	**mp;
 	char	**tt;
 	char	*s;
 	int		xx;
 	
 	tt = tet->elem;
 	xx = x;
-	mp = *map;
 	while (*tt)
 	{
 		s = *tt;
 		while (*s)
 		{
 			if (*s == '#')
-				mp[y][xx] = tet->c;
+				map[y][xx] = tet->c;
 			++xx;
 			++s;
 		}
@@ -347,28 +332,23 @@ void		print_arr(char **arr)
 		ft_putendl(*(arr++));
 }
 
-void		remove_tetr(char ***map, char c)
+void		remove_tetr(char **map, char c)
 {
-	char	**mp;
 	char	*s;
 
-	mp = *map;
-	while (*mp)
+	while (*map)
 	{
-		s = *mp;
+		s = *map;
 		while (*s)
 		{
 			if (*s == c)
 				*s = '.';
 			++s;
 		}
-		++mp;
+		++map;
 	}
 }
 
-/*
-**Алгоритм рекурсивного перебора всех возможных расстановок фигур *tet в матрице **map
-*/
 int			bruteforce(char **map, t_tet *tet)
 {
 	int		y;
@@ -384,11 +364,13 @@ int			bruteforce(char **map, t_tet *tet)
 			{
 				if (try_add_tetr(y, x, map, tet->elem))
 				{
-					add_tetr(y, x, &map, tet);
+					add_tetr(y, x, map, tet);
+					print_arr(map);
+					ft_putendl("");
 					if (bruteforce(map, tet->next))
 						return (1);
 					else
-						remove_tetr(&map, tet->c);
+						remove_tetr(map, tet->c);
 				}
 				++x;
 			}
@@ -399,37 +381,6 @@ int			bruteforce(char **map, t_tet *tet)
 	}
 	print_arr(map);
 	return (1);
-}
-
-/*
-**Ищет ch в двумерной матрице mtx, в случае нахождения возвращает 1
-**Если ch нету в матрице, возвращает 0
-*/
-int			srch_ch_in_mtx(char **mtx, char ch)
-{
-	char	*str;
-
-	while (*mtx && (str = *(mtx++)))
-		while (*str)
-			if (*(str++) == ch)
-				return (1);
-	return (0);
-}
-
-/*
-**Проверяет, на наличие других фигур, кроме квадратов в листе *tet
-**Если в списке фигур, *tet, есть другие фигуры кроме квадрата возвращает 1
-**Если в списке фигур, *tet, все фигуры квадрат возвращает 0
-*/
-int			srch_figure(t_tet *tet)
-{
-	while (tet)
-	{
-		if (srch_ch_in_mtx(tet->elem, '.'))
-			return (1);
-		tet = tet->next;
-	}
-	return (0);
 }
 
 void		fillit(void)
@@ -444,25 +395,16 @@ void		fillit(void)
 	sq_side = 2;
 	while (sq_side * sq_side < numb_of_tetr * 4)
 		++sq_side;
-//	if (srch_figure(tetrs))
-//		++sq_side;
-/*
-**Если все фигуры квадрат то доп инкремент не нужен
-**Дописать функцию которая будет проверять на наличие точек в массивах
-**Если точек нету, это квадрат, и доп инкремент не выполняется
-**В противном случае сторона квадрата должна быть на 1 больше
-*/
 	res = get_arr(sq_side, sq_side);
-
-	print_maps(tetrs);
-	ft_putendl("");
+	print_maps(tetrs);//delete
+	ft_putendl("");//delete
 	while (!bruteforce(res, tetrs))
 	{
-		printf("%d\n", sq_side);
 		del_map(&res);
 		++sq_side;
 		res = get_arr(sq_side, sq_side); 
 	}
+	del_map(&res);
 }
 
 int			main(void)
