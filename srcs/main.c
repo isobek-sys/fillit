@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 14:10:35 by blukasho          #+#    #+#             */
-/*   Updated: 2018/12/09 21:55:30 by blukasho         ###   ########.fr       */
+/*   Updated: 2018/12/10 11:53:09 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char		**get_arr(int x, int y)
 	return (res);
 }
 
-int			get_len(t_tet *tet)
+int			get_len_lst(t_tet *tet)
 {
 	int		res;
 
@@ -98,54 +98,6 @@ t_tet		*get_map(void)
 	tmp->elem[1][0] = '#';
 	tmp->elem[1][1] = '#';
 	tmp->c = 'D';
-/*
-	nel = (t_tet *)malloc(sizeof(t_tet));
-	tmp->next = nel;
-	tmp = tmp->next;
-	tmp->elem = get_arr(3, 2);
-	tmp->elem[0][0] = '.';
-	tmp->elem[0][1] = '#';
-	tmp->elem[0][2] = '.';
-	tmp->elem[1][0] = '#';
-	tmp->elem[1][1] = '#';
-	tmp->elem[1][2] = '#';
-	tmp->c = 'D';
-
-	nel = (t_tet *)malloc(sizeof(t_tet));
-	tmp->next = nel;
-	tmp = tmp->next;
-	tmp->elem = get_arr(3, 2);
-	tmp->elem[0][0] = '.';
-	tmp->elem[0][1] = '#';
-	tmp->elem[0][2] = '.';
-	tmp->elem[1][0] = '#';
-	tmp->elem[1][1] = '#';
-	tmp->elem[1][2] = '#';
-	tmp->c = 'B';
-
-	nel = (t_tet *)malloc(sizeof(t_tet));
-	tmp->next = nel;
-	tmp = tmp->next;
-	tmp->elem = get_arr(3, 2);
-	tmp->elem[0][0] = '.';
-	tmp->elem[0][1] = '#';
-	tmp->elem[0][2] = '.';
-	tmp->elem[1][0] = '#';
-	tmp->elem[1][1] = '#';
-	tmp->elem[1][2] = '#';
-	tmp->c = 'C';
-
-	nel = (t_tet *)malloc(sizeof(t_tet));
-	tmp->next = nel;
-	tmp = tmp->next;
-	tmp->elem = get_arr(3, 2);
-	tmp->elem[0][0] = '.';
-	tmp->elem[0][1] = '#';
-	tmp->elem[0][2] = '.';
-	tmp->elem[1][0] = '#';
-	tmp->elem[1][1] = '#';
-	tmp->elem[1][2] = '#';
-	tmp->c = 'D';
 
 	nel = (t_tet *)malloc(sizeof(t_tet));
 	tmp->next = nel;
@@ -195,7 +147,6 @@ t_tet		*get_map(void)
 	tmp->elem[1][2] = '#';
 	tmp->c = 'H';
 
-
 	nel = (t_tet *)malloc(sizeof(t_tet));
 	tmp->next = nel;
 	tmp = tmp->next;
@@ -220,7 +171,6 @@ t_tet		*get_map(void)
 	tmp->elem[1][2] = '#';
 	tmp->c = 'J';
 
-
 	nel = (t_tet *)malloc(sizeof(t_tet));
 	tmp->next = nel;
 	tmp = tmp->next;
@@ -232,7 +182,6 @@ t_tet		*get_map(void)
 	tmp->elem[1][1] = '#';
 	tmp->elem[1][2] = '#';
 	tmp->c = 'K';
-
 
 	nel = (t_tet *)malloc(sizeof(t_tet));
 	tmp->next = nel;
@@ -247,7 +196,6 @@ t_tet		*get_map(void)
 	tmp->c = 'L';
 
 
-
 	nel = (t_tet *)malloc(sizeof(t_tet));
 	tmp->next = nel;
 	tmp = tmp->next;
@@ -259,7 +207,59 @@ t_tet		*get_map(void)
 	tmp->elem[1][1] = '#';
 	tmp->elem[1][2] = '#';
 	tmp->c = 'M';
-	*/
+
+	nel = (t_tet *)malloc(sizeof(t_tet));
+	tmp->next = nel;
+	tmp = tmp->next;
+	tmp->elem = get_arr(3, 2);
+	tmp->elem[0][0] = '.';
+	tmp->elem[0][1] = '#';
+	tmp->elem[0][2] = '.';
+	tmp->elem[1][0] = '#';
+	tmp->elem[1][1] = '#';
+	tmp->elem[1][2] = '#';
+	tmp->c = 'N';
+
+
+	nel = (t_tet *)malloc(sizeof(t_tet));
+	tmp->next = nel;
+	tmp = tmp->next;
+	tmp->elem = get_arr(3, 2);
+	tmp->elem[0][0] = '.';
+	tmp->elem[0][1] = '#';
+	tmp->elem[0][2] = '.';
+	tmp->elem[1][0] = '#';
+	tmp->elem[1][1] = '#';
+	tmp->elem[1][2] = '#';
+	tmp->c = 'O';
+
+
+	nel = (t_tet *)malloc(sizeof(t_tet));
+	tmp->next = nel;
+	tmp = tmp->next;
+	tmp->elem = get_arr(3, 2);
+	tmp->elem[0][0] = '.';
+	tmp->elem[0][1] = '#';
+	tmp->elem[0][2] = '.';
+	tmp->elem[1][0] = '#';
+	tmp->elem[1][1] = '#';
+	tmp->elem[1][2] = '#';
+	tmp->c = 'P';
+
+
+
+	nel = (t_tet *)malloc(sizeof(t_tet));
+	tmp->next = nel;
+	tmp = tmp->next;
+	tmp->elem = get_arr(3, 2);
+	tmp->elem[0][0] = '.';
+	tmp->elem[0][1] = '#';
+	tmp->elem[0][2] = '.';
+	tmp->elem[1][0] = '#';
+	tmp->elem[1][1] = '#';
+	tmp->elem[1][2] = '#';
+	tmp->c = 'Q';
+	
 	return (res);
 }
 
@@ -366,6 +366,9 @@ void		remove_tetr(char ***map, char c)
 	}
 }
 
+/*
+**Алгоритм рекурсивного перебора всех возможных расстановок фигур *tet в матрице **map
+*/
 int			bruteforce(char **map, t_tet *tet)
 {
 	int		y;
@@ -398,6 +401,37 @@ int			bruteforce(char **map, t_tet *tet)
 	return (1);
 }
 
+/*
+**Ищет ch в двумерной матрице mtx, в случае нахождения возвращает 1
+**Если ch нету в матрице, возвращает 0
+*/
+int			srch_ch_in_mtx(char **mtx, char ch)
+{
+	char	*str;
+
+	while (*mtx && (str = *(mtx++)))
+		while (*str)
+			if (*(str++) == ch)
+				return (1);
+	return (0);
+}
+
+/*
+**Проверяет, на наличие других фигур, кроме квадратов в листе *tet
+**Если в списке фигур, *tet, есть другие фигуры кроме квадрата возвращает 1
+**Если в списке фигур, *tet, все фигуры квадрат возвращает 0
+*/
+int			srch_figure(t_tet *tet)
+{
+	while (tet)
+	{
+		if (srch_ch_in_mtx(tet->elem, '.'))
+			return (1);
+		tet = tet->next;
+	}
+	return (0);
+}
+
 void		fillit(void)
 {
 	t_tet	*tetrs;
@@ -406,11 +440,12 @@ void		fillit(void)
 	int		sq_side;
 
 	tetrs = get_map();
-	numb_of_tetr = get_len(tetrs);
+	numb_of_tetr = get_len_lst(tetrs);
 	sq_side = 2;
 	while (sq_side * sq_side < numb_of_tetr * 4)
 		++sq_side;
-//	++sq_side;//test parameter
+//	if (srch_figure(tetrs))
+//		++sq_side;
 /*
 **Если все фигуры квадрат то доп инкремент не нужен
 **Дописать функцию которая будет проверять на наличие точек в массивах
