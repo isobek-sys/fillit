@@ -6,7 +6,7 @@
 /*   By: vladuhin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 18:53:00 by vladuhin          #+#    #+#             */
-/*   Updated: 2018/12/11 13:36:58 by blukasho         ###   ########.fr       */
+/*   Updated: 2018/12/11 15:36:35 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,11 +132,6 @@ int     count_touching(char *cont, int len)
     return (1);
 }
 
-void	clear_maps(char *)
-{
-	
-}
-
 int     validation(int fd)
 {
     int     len;
@@ -150,8 +145,10 @@ int     validation(int fd)
     if (!(check_symbols(cont)) || !(check_newline(cont, len)) 
         || !(check_other(cont, len)) || !(count_hesh(cont, len)) 
         || !(count_touching(cont, len)))
+	{
 		ft_putendl("error");
         exit(EXIT_FAILURE);
+	}
 	clear_maps(cont);
     return (0);
 }
