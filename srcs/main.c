@@ -6,12 +6,12 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 14:10:35 by blukasho          #+#    #+#             */
-/*   Updated: 2018/12/10 15:55:23 by blukasho         ###   ########.fr       */
+/*   Updated: 2018/12/11 12:23:33 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
-
+/*
 char		**get_arr(int x, int y)
 {
 	char	**res;
@@ -28,7 +28,7 @@ char		**get_arr(int x, int y)
 	}
 	return (res);
 }
-
+*/
 int			get_len_lst(t_tet *tet)
 {
 	int		res;
@@ -261,11 +261,11 @@ t_tet		*get_map(void)
 	tmp->elem[1][1] = '#';
 	tmp->elem[1][2] = '#';
 	tmp->c = 'Q';
-*/	
+*/
 	return (res);
 }
-
-void		del_map(char ***map)
+/*
+void		del_arr(char ***map)
 {
 	char	**tmp;
 
@@ -365,8 +365,6 @@ int			bruteforce(char **map, t_tet *tet)
 				if (try_add_tetr(y, x, map, tet->elem))
 				{
 					add_tetr(y, x, map, tet);
-					print_arr(map);
-					ft_putendl("");
 					if (bruteforce(map, tet->next))
 						return (1);
 					else
@@ -382,7 +380,7 @@ int			bruteforce(char **map, t_tet *tet)
 	print_arr(map);
 	return (1);
 }
-
+*/
 void		fillit(void)
 {
 	t_tet	*tetrs;
@@ -400,11 +398,11 @@ void		fillit(void)
 	ft_putendl("");//delete
 	while (!bruteforce(res, tetrs))
 	{
-		del_map(&res);
+		del_arr(&res);
 		++sq_side;
 		res = get_arr(sq_side, sq_side); 
 	}
-	del_map(&res);
+	del_arr(&res);
 }
 
 int			main(void)

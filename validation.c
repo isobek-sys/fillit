@@ -6,11 +6,11 @@
 /*   By: vladuhin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 18:53:00 by vladuhin          #+#    #+#             */
-/*   Updated: 2018/12/03 18:53:04 by vladuhin         ###   ########.fr       */
+/*   Updated: 2018/12/11 13:36:58 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fillit.h"
+#include "fillit.h"
 
 int     check_symbols(char *content)
 {
@@ -132,10 +132,15 @@ int     count_touching(char *cont, int len)
     return (1);
 }
 
+void	clear_maps(char *)
+{
+	
+}
+
 int     validation(int fd)
 {
     int     len;
-    char    file_read[MAXFILE];
+    char    file_read[MAXFILE + 1];
     char    *cont;
 
     len = read(fd, file_read, MAXFILE);
@@ -145,7 +150,8 @@ int     validation(int fd)
     if (!(check_symbols(cont)) || !(check_newline(cont, len)) 
         || !(check_other(cont, len)) || !(count_hesh(cont, len)) 
         || !(count_touching(cont, len)))
+		ft_putendl("error");
         exit(EXIT_FAILURE);
-    printf("%s", cont);
+	clear_maps(cont);
     return (0);
 }
