@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 15:44:42 by blukasho          #+#    #+#             */
-/*   Updated: 2018/12/11 12:30:33 by blukasho         ###   ########.fr       */
+/*   Updated: 2018/12/12 11:40:00 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,4 +107,37 @@ int			bruteforce(char **map, t_tet *tet)
 	}
 	print_arr(map);
 	return (1);
+}
+
+int			count_numb_of_tetr(char *maps)
+{
+	int		tetr;
+
+	tetr = 1;
+	while (*maps)
+		if (*maps == '\n' && *(maps + 1) == '\n')
+			++tetr;
+	return (tetr);
+}
+
+void		fillit(char *maps)
+{
+	char	**res;
+	int		sq_side;
+	int		numb_of_tetr;
+
+	sq_side = 2;
+	numb_of_tetr = count_numb_of_tetr(maps);
+	while (sq_side * sq_side < numb_of_tetr * 4)
+		++sq_side;
+/*
+	res = get_arr(sq_side, sq_side);
+	while (!bruteforce(res, maps, ch))
+	{
+		del_arr(&res);
+		++sq_side;
+		res = get_arr(sq_side, sq_side);
+	}
+	del_arr(&res);
+	*/
 }

@@ -6,12 +6,13 @@
 /*   By: vladuhin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 18:53:00 by vladuhin          #+#    #+#             */
-/*   Updated: 2018/12/11 15:36:35 by blukasho         ###   ########.fr       */
+/*   Updated: 2018/12/12 12:32:54 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "../includes/fillit.h"
 
+//add to check_other() 
 int     check_symbols(char *content)
 {
     if (*content == '\0')
@@ -25,10 +26,10 @@ int     check_symbols(char *content)
     return (1);
 }
 
-int     check_newline(char *content, int len)
+static int	check_newline(char *content, int len)
 {
-    int i;
-    int j;
+    int		i;
+    int		j;
 
     i = 4;
     j = 0;
@@ -53,11 +54,30 @@ int     check_newline(char *content, int len)
     return (1);
 }
 
-int     check_other(char *content,  int len)
+/*
+static int	check_other(char *cont)
 {
-    char *other;
-    int i;
-    int j;
+	int		sym;
+
+	if (!*cont)
+		return(0);
+	sym = 0;
+	while (*cont)
+	{
+		if (*cont != '\n')
+			++sym;
+		if (*cont != '#' && *cont != '.' && *cont != '\n')
+			return (0);
+	}
+	return ((sym % 16 == 0) ? 1 : 0);
+}
+*/
+//Надо переписать полностью
+static int	check_other(char *content,  int len)
+{
+    char	*other;
+    int		i;
+    int		j;
     
     i = 0;
     j = 0;
@@ -79,11 +99,11 @@ int     check_other(char *content,  int len)
     return (1);
 }
 
-int     count_hesh(char *content, int len)
+static int	count_hesh(char *content, int len)
 {
-    int i;
-    int j;
-    int count;
+    int		i;
+    int		j;
+    int		count;
 
     i = -1;
     j = 0;
@@ -105,11 +125,11 @@ int     count_hesh(char *content, int len)
     return (1);
 }
 
-int     count_touching(char *cont, int len)
+static int	count_touching(char *cont, int len)
 {
-    int i;
-    int j;
-    int touch;
+    int		i;
+    int		j;
+    int		touch;
 
     i = -1;
     j = 0;
@@ -146,9 +166,13 @@ int     validation(int fd)
         || !(check_other(cont, len)) || !(count_hesh(cont, len)) 
         || !(count_touching(cont, len)))
 	{
+		ft_strdel(&cont);
 		ft_putendl("error");
         exit(EXIT_FAILURE);
 	}
-	clear_maps(cont);
+	parse_maps(cont);
+//	fillit(cont);
+	printf("<--------result parsing------>\n%s", cont);
+	ft_strdel(&cont);
     return (0);
 }
