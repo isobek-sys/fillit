@@ -6,7 +6,7 @@
 /*   By: vladuhin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 18:53:00 by vladuhin          #+#    #+#             */
-/*   Updated: 2018/12/12 12:32:54 by blukasho         ###   ########.fr       */
+/*   Updated: 2018/12/12 14:55:50 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ static int	check_newline(char *content, int len)
     return (1);
 }
 
-/*
 static int	check_other(char *cont)
 {
 	int		sym;
@@ -68,35 +67,9 @@ static int	check_other(char *cont)
 			++sym;
 		if (*cont != '#' && *cont != '.' && *cont != '\n')
 			return (0);
+		++cont;
 	}
 	return ((sym % 16 == 0) ? 1 : 0);
-}
-*/
-//Надо переписать полностью
-static int	check_other(char *content,  int len)
-{
-    char	*other;
-    int		i;
-    int		j;
-    
-    i = 0;
-    j = 0;
-    other = (char*)malloc(sizeof(char) * (len + 1));
-    while(content[j] != '\0')
-    {
-        if (content[j] != '\n')
-        {
-            other[i] = content[j];
-            j++;
-            i++;
-        }
-        else
-            j++;
-    }
-    if (ft_strlen(other) % 16 != 0)
-        return (0);
-    free(other);
-    return (1);
 }
 
 static int	count_hesh(char *content, int len)
@@ -155,24 +128,26 @@ static int	count_touching(char *cont, int len)
 int     validation(int fd)
 {
     int     len;
-    char    file_read[MAXFILE + 1];
+    char    file_read[MAXFILE];
     char    *cont;
+	char	*tmp;
 
     len = read(fd, file_read, MAXFILE);
-    cont = (char*)malloc(sizeof(char) * (len + 1));
+	file_read[len + 1] = '\0';
+    cont = ft_strnew(len);
+	tmp = cont;
     cont = ft_strsub(file_read, 0, len);
-    cont[len] = '\0';
-    if (!(check_symbols(cont)) || !(check_newline(cont, len)) 
-        || !(check_other(cont, len)) || !(count_hesh(cont, len)) 
-        || !(count_touching(cont, len)))
+	free(tmp);
+    if (!(check_newline(cont, len)) || !(check_other(cont))
+		|| !(count_hesh(cont, len)) || !(count_touching(cont, len)))
 	{
-		ft_strdel(&cont);
+		free(cont);
 		ft_putendl("error");
-        exit(EXIT_FAILURE);
+		return (0);
 	}
 	parse_maps(cont);
-//	fillit(cont);
-	printf("<--------result parsing------>\n%s", cont);
-	ft_strdel(&cont);
+	printf("<--------result parsing------>\n%s<---------end result----------->\n", cont);
+	fillit(cont);
+	free(cont);
     return (0);
 }

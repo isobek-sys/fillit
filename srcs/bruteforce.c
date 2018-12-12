@@ -6,12 +6,12 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 15:44:42 by blukasho          #+#    #+#             */
-/*   Updated: 2018/12/12 11:40:00 by blukasho         ###   ########.fr       */
+/*   Updated: 2018/12/12 12:51:37 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
-
+/*
 static void	add_tetr(int y, int x, char **map, t_tet *tet)
 {
 	char	**tt;
@@ -108,21 +108,23 @@ int			bruteforce(char **map, t_tet *tet)
 	print_arr(map);
 	return (1);
 }
-
+*/
 int			count_numb_of_tetr(char *maps)
 {
 	int		tetr;
 
 	tetr = 1;
 	while (*maps)
+	{
 		if (*maps == '\n' && *(maps + 1) == '\n')
 			++tetr;
+		++maps;
+	}
 	return (tetr);
 }
 
 void		fillit(char *maps)
 {
-	char	**res;
 	int		sq_side;
 	int		numb_of_tetr;
 
@@ -130,6 +132,7 @@ void		fillit(char *maps)
 	numb_of_tetr = count_numb_of_tetr(maps);
 	while (sq_side * sq_side < numb_of_tetr * 4)
 		++sq_side;
+	printf("numb %d\n", numb_of_tetr);
 /*
 	res = get_arr(sq_side, sq_side);
 	while (!bruteforce(res, maps, ch))
