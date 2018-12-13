@@ -6,7 +6,7 @@
 /*   By: vladuhin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 18:53:00 by vladuhin          #+#    #+#             */
-/*   Updated: 2018/12/13 11:30:49 by blukasho         ###   ########.fr       */
+/*   Updated: 2018/12/13 17:59:35 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ int     validation(int fd)
 	char	*tmp;
 
     len = read(fd, file_read, MAXFILE);
-	file_read[len + 1] = '\0';
+	file_read[len] = '\0';
     cont = ft_strnew(len);
 	tmp = cont;
     cont = ft_strsub(file_read, 0, len);

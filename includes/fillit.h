@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 14:00:41 by blukasho          #+#    #+#             */
-/*   Updated: 2018/12/13 11:20:59 by blukasho         ###   ########.fr       */
+/*   Updated: 2018/12/13 18:03:32 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,11 @@
 # include <unistd.h>
 # include "../libft/includes/libft.h"
 
-//delete stdio.h
-# include <stdio.h>
+typedef struct	s_point
+{
+	int	x;
+	int	y;
+}				t_p;
 
 int		count_numb_of_tetr(char *maps);
 int		validation(int fd);

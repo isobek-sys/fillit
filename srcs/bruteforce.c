@@ -6,29 +6,29 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 15:44:42 by blukasho          #+#    #+#             */
-/*   Updated: 2018/12/13 11:46:08 by blukasho         ###   ########.fr       */
+/*   Updated: 2018/12/13 18:05:03 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
 
-static void	add_tetr(int y, int x, char **map, char *tetrs, char ch)
+static void	add_tetr(t_p p, char **map, char *tetrs, char ch)
 {
 	int		xx;
 
-	xx = x;
+	xx = p.x;
 	while (*tetrs != '\n' && *tetrs != '\0')
 	{
 		while (*tetrs != '\n')
 		{
 			if (*tetrs == '#')
-				map[y][xx] = ch;
+				map[p.y][xx] = ch;
 			++xx;
 			++tetrs;
 		}
-		xx = x;
+		xx = p.x;
 		++tetrs;
-		++y;
+		++(p.y);
 	}
 }
 
@@ -89,7 +89,7 @@ static int	bruteforce(char **map, char *tetrs, char let)
 			{
 				if (try_add_tetr(y, x, map, tetrs))
 				{
-					add_tetr(y, x, map, tetrs, let);
+					add_tetr((t_p){.x = x, .y = y}, map, tetrs, let);
 					if (bruteforce(map, get_next_tetr(tetrs), let + 1))
 						return (1);
 					else
