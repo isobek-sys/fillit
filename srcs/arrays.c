@@ -3,28 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   arrays.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
+/*   By: tmaluh <tmaluh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 12:10:09 by blukasho          #+#    #+#             */
-/*   Updated: 2018/12/13 10:50:56 by blukasho         ###   ########.fr       */
+/*   Updated: 2018/12/13 18:26:59 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
 
-char		**get_arr(int y, int x)
+char		**get_arr(t_p p)
 {
 	char	**res;
 	int		len;
 
-	res = (char **)malloc(++y * sizeof(char *));
-	res[--y] = NULL;
-	while (--y >= 0)
+	res = (char **)malloc(++(p.y) * sizeof(char *));
+	res[--(p.y)] = NULL;
+	while (--(p.y) >= 0)
 	{
-		res[y] = ft_strnew(x);
+		res[p.y] = ft_strnew(p.x);
 		len = -1;
-		while (++len < x)
-			res[y][len] = '.';
+		while (++len < p.x)
+			res[p.y][len] = '.';
 	}
 	return (res);
 }

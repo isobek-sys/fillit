@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vladuhin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tmaluh <tmaluh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 18:53:00 by vladuhin          #+#    #+#             */
-/*   Updated: 2018/12/13 17:59:35 by blukasho         ###   ########.fr       */
+/*   Updated: 2018/12/13 18:31:33 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,10 +95,10 @@ static int	count_touching(char *cont, int len)
     touch = 0;
     while ((++i < len) && (++j <=20))
     {
-        (cont[i] == '#' && j > 1 && cont[i - 1] == '#') ? touch++ : touch;
-		(cont[i] == '#' && j < 19 && cont[i + 1] == '#') ? touch++ : touch;
-		(cont[i] == '#' && j > 5 && cont[i - 5] == '#') ? touch++ : touch;
-		(cont[i] == '#' && j < 15 && cont[i + 5] == '#') ? touch++ : touch;
+        (cont[i] == '#' && j > 1 && cont[i - 1] == '#') ? ++touch : touch;
+		(cont[i] == '#' && j < 19 && cont[i + 1] == '#') ? ++touch : touch;
+		(cont[i] == '#' && j > 5 && cont[i - 5] == '#') ? ++touch : touch;
+		(cont[i] == '#' && j < 15 && cont[i + 5] == '#') ? ++touch : touch;
         if (j == 20)
         {
             if (touch != 6 && touch != 8)

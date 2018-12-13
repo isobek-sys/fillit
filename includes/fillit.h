@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tmaluh <tmaluh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 14:00:41 by blukasho          #+#    #+#             */
-/*   Updated: 2018/12/13 18:03:32 by blukasho         ###   ########.fr       */
+/*   Updated: 2018/12/13 18:28:26 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		validation(int fd);
 int		check_symbols(char *cont);
 int		len_before_ch(char *str, char ch);
 char	*get_next_tetr(char *tetrs);
-char	**get_arr(int y, int x);
+char	**get_arr(t_p p);
 void	fillit(char *maps);
 void	del_arr(char ***arr);
 void	print_arr(char **arr);

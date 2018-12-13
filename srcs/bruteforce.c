@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bruteforce.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tmaluh <tmaluh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 15:44:42 by blukasho          #+#    #+#             */
-/*   Updated: 2018/12/13 18:05:03 by blukasho         ###   ########.fr       */
+/*   Updated: 2018/12/13 18:28:25 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,28 +32,28 @@ static void	add_tetr(t_p p, char **map, char *tetrs, char ch)
 	}
 }
 
-static int	try_add_tetr(int y, int x, char **map, char *tetrs)
+static int	try_add_tetr(t_p p, char **map, char *tetrs)
 {
 	int		xx;
 
-	xx = x;
+	xx = p.x;
 	while (*tetrs)
 	{
-		if (!map[y])
+		if (!map[p.y])
 			return (0);
 		while (*tetrs != '\n')
 		{
-			if (!map[y][xx])
+			if (!map[p.y][xx])
 				return (0);
-			if (*tetrs == '#' && map[y][xx] != '.')
+			if (*tetrs == '#' && map[p.y][xx] != '.')
 				return (0);
 			++xx;
 			++tetrs;
 		}
 		if (*tetrs == '\n' && *(tetrs + 1) == '\n')
 			return (1);
-		xx = x;
-		++y;
+		xx = p.x;
+		++p.y;
 		++tetrs;
 	}
 	return (1);
@@ -78,24 +78,23 @@ static void	remove_tetr(char **map, char c)
 
 static int	bruteforce(char **map, char *tetrs, char let)
 {
-	int		y;
-	int		x;
+	t_p	p;
 
-	y = -1;
+	p.y = -1;
 	if (*tetrs)
 	{
-		while (map[++y] && !(x = 0))
-			while (map[y][x])
+		while (map[++(p.y)] && !(p.x = 0))
+			while (map[p.y][p.x])
 			{
-				if (try_add_tetr(y, x, map, tetrs))
+				if (try_add_tetr(p, map, tetrs))
 				{
-					add_tetr((t_p){.x = x, .y = y}, map, tetrs, let);
+					add_tetr(p, map, tetrs, let);
 					if (bruteforce(map, get_next_tetr(tetrs), let + 1))
 						return (1);
 					else
 						remove_tetr(map, let);
 				}
-				++x;
+				++p.x;
 			}
 		return (0);
 	}
@@ -115,12 +114,12 @@ void		fillit(char *tetrs)
 	numb_of_tetr = count_numb_of_tetr(tetrs);
 	while (sq_side * sq_side < numb_of_tetr * 4)
 		++sq_side;
-	res = get_arr(sq_side, sq_side);
+	res = get_arr((t_p){.x = sq_side, .y = sq_side});
 	while (!bruteforce(res, tetrs, let))
 	{
 		del_arr(&res);
 		++sq_side;
-		res = get_arr(sq_side, sq_side);
+		res = get_arr((t_p){.x = sq_side, .y = sq_side});
 	}
 	del_arr(&res);
 }
