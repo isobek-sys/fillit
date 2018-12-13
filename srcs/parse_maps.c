@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 15:37:09 by blukasho          #+#    #+#             */
-/*   Updated: 2018/12/12 14:42:50 by blukasho         ###   ########.fr       */
+/*   Updated: 2018/12/13 09:56:00 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,10 @@ static void	del_empty_str(char *maps)
 {
 	while (*maps)
 		if (ft_strnstr(maps, "....\n", 5))
-			ft_memmove(maps, maps + 5, ft_strlen(maps + 1));
+			ft_memmove(maps, maps + 5, ft_strlen(maps));
 		else
 			++maps;
 }
-
 void		parse_maps(char *maps)
 {
 	int		len;
