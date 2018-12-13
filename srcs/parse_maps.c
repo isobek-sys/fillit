@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 15:37:09 by blukasho          #+#    #+#             */
-/*   Updated: 2018/12/13 09:56:00 by blukasho         ###   ########.fr       */
+/*   Updated: 2018/12/13 10:09:42 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ static void	del_empty_str(char *maps)
 		else
 			++maps;
 }
+
 void		parse_maps(char *maps)
 {
 	int		len;

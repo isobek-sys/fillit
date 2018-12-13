@@ -6,25 +6,11 @@
 /*   By: vladuhin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 18:53:00 by vladuhin          #+#    #+#             */
-/*   Updated: 2018/12/13 09:14:39 by blukasho         ###   ########.fr       */
+/*   Updated: 2018/12/13 11:30:49 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
-
-//add to check_other() 
-int     check_symbols(char *content)
-{
-    if (*content == '\0')
-        return (0);
-    while(*content != '\0')
-    {
-        if (*content != '.' && *content != '#' && *content != '\n')
-            return (0);
-        content++;
-    }
-    return (1);
-}
 
 static int	check_newline(char *content, int len)
 {
@@ -146,7 +132,6 @@ int     validation(int fd)
 		return (0);
 	}
 	parse_maps(cont);
-	printf("<--------result parsing------>\n%s<---------end result----------->\n", cont);
 	fillit(cont);
 	free(cont);
     return (0);
