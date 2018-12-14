@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 15:44:42 by blukasho          #+#    #+#             */
-/*   Updated: 2018/12/13 18:05:03 by blukasho         ###   ########.fr       */
+/*   Updated: 2018/12/14 15:40:44 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,28 +32,28 @@ static void	add_tetr(t_p p, char **map, char *tetrs, char ch)
 	}
 }
 
-static int	try_add_tetr(int y, int x, char **map, char *tetrs)
+static int	try_add_tetr(t_p p, char **map, char *tetrs)
 {
 	int		xx;
 
-	xx = x;
+	xx = p.x;
 	while (*tetrs)
 	{
-		if (!map[y])
+		if (!map[p.y])
 			return (0);
 		while (*tetrs != '\n')
 		{
-			if (!map[y][xx])
+			if (!map[p.y][xx])
 				return (0);
-			if (*tetrs == '#' && map[y][xx] != '.')
+			if (*tetrs == '#' && map[p.y][xx] != '.')
 				return (0);
 			++xx;
 			++tetrs;
 		}
 		if (*tetrs == '\n' && *(tetrs + 1) == '\n')
 			return (1);
-		xx = x;
-		++y;
+		xx = p.x;
+		++(p.y);
 		++tetrs;
 	}
 	return (1);
@@ -87,7 +87,7 @@ static int	bruteforce(char **map, char *tetrs, char let)
 		while (map[++y] && !(x = 0))
 			while (map[y][x])
 			{
-				if (try_add_tetr(y, x, map, tetrs))
+				if (try_add_tetr((t_p){.x = x, .y = y}, map, tetrs))
 				{
 					add_tetr((t_p){.x = x, .y = y}, map, tetrs, let);
 					if (bruteforce(map, get_next_tetr(tetrs), let + 1))
