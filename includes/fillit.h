@@ -6,13 +6,13 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 14:00:41 by blukasho          #+#    #+#             */
-/*   Updated: 2018/12/15 12:44:23 by blukasho         ###   ########.fr       */
+/*   Updated: 2018/12/15 14:28:06 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
-# define MAXFILE 546
+# define MAXFILE 545
 # include <stdlib.h>
 # include <fcntl.h>
 # include <unistd.h>

@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 12:10:16 by blukasho          #+#    #+#             */
-/*   Updated: 2018/12/15 12:17:55 by blukasho         ###   ########.fr       */
+/*   Updated: 2018/12/15 14:30:28 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ char		*ft_strsub(char const *s, int start, int len)
 	int		i;
 
 	i = -1;
-	res = ft_strnew(len);
+	res = ft_strnew(len + 1);
 	while (++i < len)
 		res[i] = s[start++];
 	return (res);

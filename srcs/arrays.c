@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 12:10:09 by blukasho          #+#    #+#             */
-/*   Updated: 2018/12/15 13:23:32 by blukasho         ###   ########.fr       */
+/*   Updated: 2018/12/15 14:32:06 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char		**get_arr(int y, int x)
 	res[--y] = NULL;
 	while (--y >= 0)
 	{
-		res[y] = ft_strnew(x);
+		res[y] = ft_strnew(x + 1);
 		len = -1;
 		while (++len < x)
 			res[y][len] = '.';
