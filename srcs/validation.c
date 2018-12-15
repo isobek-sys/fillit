@@ -6,7 +6,7 @@
 /*   By: vladuhin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 18:53:00 by vladuhin          #+#    #+#             */
-/*   Updated: 2018/12/15 13:30:52 by blukasho         ###   ########.fr       */
+/*   Updated: 2018/12/15 14:01:07 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,16 +112,12 @@ static int	count_touching(char *cont, int len)
 int			validation(int fd)
 {
 	int		len;
-	char	file_read[MAXFILE];
+	char	file_read[MAXFILE + 1];
 	char	*cont;
-	char	*tmp;
 
 	len = read(fd, file_read, MAXFILE);
-	file_read[len + 1] = '\0';
-	cont = ft_strnew(len);
-	tmp = cont;
+	file_read[len] = '\0';
 	cont = ft_strsub(file_read, 0, len);
-	free(tmp);
 	if (!(check_newline(cont, len)) || !(check_other(cont))
 		|| !(count_hesh(cont, len)) || !(count_touching(cont, len)))
 	{
