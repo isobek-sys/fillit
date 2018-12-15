@@ -6,11 +6,9 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 12:10:16 by blukasho          #+#    #+#             */
-/*   Updated: 2018/12/13 11:23:03 by blukasho         ###   ########.fr       */
+/*   Updated: 2018/12/15 12:17:55 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "../includes/fillit.h"
 
 char		*get_next_tetr(char *tetrs)
 {
@@ -45,4 +43,38 @@ int			count_numb_of_tetr(char *maps)
 		++maps;
 	}
 	return (tetr);
+}
+
+char		*ft_strnstr(const char *haystack, const char *needle, int len)
+{
+	int		i;
+	int		r;
+
+	i = -1;
+	r = 0;
+	while (*haystack && len >= ft_strlen(needle))
+	{
+		while (needle[++i])
+			if (needle[i] != haystack[i])
+				r = 1;
+		if (!r)
+			return ((char *)haystack);
+		--len;
+		i = -1;
+		r = 0;
+		++haystack;
+	}
+	return (NULL);
+}
+
+char		*ft_strsub(char const *s, int start, int len)
+{
+	char	*res;
+	int		i;
+
+	i = -1;
+	res = ft_strnew(len);
+	while (++i < len)
+		res[i] = s[start++];
+	return (res);
 }

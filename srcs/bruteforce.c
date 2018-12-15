@@ -6,11 +6,9 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 15:44:42 by blukasho          #+#    #+#             */
-/*   Updated: 2018/12/14 15:40:44 by blukasho         ###   ########.fr       */
+/*   Updated: 2018/12/15 13:23:49 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "../includes/fillit.h"
 
 static void	add_tetr(t_p p, char **map, char *tetrs, char ch)
 {

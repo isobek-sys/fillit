@@ -6,11 +6,9 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 12:10:09 by blukasho          #+#    #+#             */
-/*   Updated: 2018/12/13 10:50:56 by blukasho         ###   ########.fr       */
+/*   Updated: 2018/12/15 13:23:32 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "../includes/fillit.h"
 
 char		**get_arr(int y, int x)
 {

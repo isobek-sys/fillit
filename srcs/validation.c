@@ -6,11 +6,9 @@
 /*   By: vladuhin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 18:53:00 by vladuhin          #+#    #+#             */
-/*   Updated: 2018/12/14 15:43:13 by blukasho         ###   ########.fr       */
+/*   Updated: 2018/12/15 13:30:52 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "../includes/fillit.h"
 
 static int	check_newline(char *content, int len)
 {
