@@ -17,7 +17,7 @@ SRC = srcs/main.c srcs/validation.c srcs/arrays.c srcs/parse_maps.c\
 
 OBJ = $(SRC:.c=.o)
 
-FLAGS = -Wall -Wextra -Werror -include includes/fillit.h
+FLAGS = -Wall -Wextra -Werror -I includes
 
 all: $(NAME)
 

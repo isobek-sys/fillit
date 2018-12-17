@@ -6,9 +6,11 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 12:10:16 by blukasho          #+#    #+#             */
-/*   Updated: 2018/12/15 14:30:28 by blukasho         ###   ########.fr       */
+/*   Updated: 2018/12/17 14:03:37 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../includes/fillit.h"
 
 char		*get_next_tetr(char *tetrs)
 {

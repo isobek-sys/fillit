@@ -6,9 +6,11 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 14:10:35 by blukasho          #+#    #+#             */
-/*   Updated: 2018/12/15 13:24:05 by blukasho         ###   ########.fr       */
+/*   Updated: 2018/12/17 14:05:21 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../includes/fillit.h"
 
 int		main(int argc, char **argv)
 {

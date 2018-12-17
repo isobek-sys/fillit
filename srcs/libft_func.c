@@ -6,9 +6,11 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 10:24:19 by blukasho          #+#    #+#             */
-/*   Updated: 2018/12/15 13:49:33 by blukasho         ###   ########.fr       */
+/*   Updated: 2018/12/17 14:05:07 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../includes/fillit.h"
 
 void			ft_putendl(char const *s)
 {

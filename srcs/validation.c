@@ -6,9 +6,11 @@
 /*   By: vladuhin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 18:53:00 by vladuhin          #+#    #+#             */
-/*   Updated: 2018/12/15 14:28:22 by blukasho         ###   ########.fr       */
+/*   Updated: 2018/12/17 14:03:37 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../includes/fillit.h"
 
 static int	check_newline(char *content, int len)
 {
@@ -118,8 +120,9 @@ int			validation(int fd)
 	len = read(fd, file_read, MAXFILE);
 	file_read[len] = '\0';
 	cont = ft_strsub(file_read, 0, len);
-	if (!(check_newline(cont, len)) || !(check_other(cont))
-		|| !(count_hesh(cont, len)) || !(count_touching(cont, len)))
+	if (!check_other(cont) || !check_newline(cont, len)
+		|| !count_hesh(cont, len) || !count_touching(cont, len) ||
+		read(fd, file_read, MAXFILE))
 	{
 		free(cont);
 		ft_putendl("error");

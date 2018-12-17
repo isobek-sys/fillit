@@ -6,9 +6,11 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 15:37:09 by blukasho          #+#    #+#             */
-/*   Updated: 2018/12/15 14:59:49 by blukasho         ###   ########.fr       */
+/*   Updated: 2018/12/17 14:03:37 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../includes/fillit.h"
 
 static int	count_str_in_map(char *map)
 {
